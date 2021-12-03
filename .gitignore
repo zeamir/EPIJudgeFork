@@ -23,6 +23,7 @@ cpp_build
 build
 
 epi_judge_java/java_build/
+/epi_judge_java/out/**/*.class
 *.class
 
 # OS X specific files

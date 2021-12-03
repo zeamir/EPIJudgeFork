@@ -33,11 +33,27 @@ public class KthNodeInTree {
     }
   }
 
-  public static BinaryTreeNode<Integer>
-  findKthNodeBinaryTree(BinaryTreeNode<Integer> tree, int k) {
-    // TODO - you fill in here.
-    return null;
-  }
+	public static BinaryTreeNode<Integer>
+	findKthNodeBinaryTree(BinaryTreeNode<Integer> tree, int k) {
+
+		// Implement this placeholder.
+		return find(tree, k);
+	}
+
+	public static BinaryTreeNode<Integer> find(BinaryTreeNode<Integer> root, int k) {
+		if (root == null || k > root.size) {
+			return null;
+		}
+		int leftSize = root.left == null ? 0 : root.left.size;
+		if (leftSize > 0 && k <= leftSize) {
+			return find(root.left, k);
+		}
+		if (k == leftSize + 1) {
+			return root;
+		}
+		// if we got here it meanst result must be in rigth subtree
+		return find(root.right, k - 1 - leftSize);
+	}
   public static BinaryTreeNode<Integer>
   convertToTreeWithSize(BinaryTree<Integer> original) {
     if (original == null)
