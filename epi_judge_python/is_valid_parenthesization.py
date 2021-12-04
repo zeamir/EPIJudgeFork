@@ -1,9 +1,24 @@
+import collections
+from typing import Deque
+
 from test_framework import generic_test
 
 
 def is_well_formed(s: str) -> bool:
-    # TODO - you fill in here.
-    return True
+    mappings = {
+        "}": "{",
+        "]": "[",
+        ")": "("
+    }
+    stack: Deque[str] = collections.deque()
+    for c in s:
+        # if we get an opener, put it to stack
+        if c in "{[(":
+            stack.append(c)
+        # make sure the stack contains its matching opener
+        elif not stack or stack.pop() != mappings[c]:
+            return False
+    return len(stack) == 0
 
 
 if __name__ == '__main__':
