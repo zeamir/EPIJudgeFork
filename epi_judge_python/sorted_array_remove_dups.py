@@ -6,9 +6,30 @@ from test_framework.test_utils import enable_executor_hook
 
 
 # Returns the number of valid entries after deletion.
+# noinspection PyPep8Naming
 def delete_duplicates(A: List[int]) -> int:
-    # TODO - you fill in here.
-    return 0
+    #
+    # 0 1 2 3 4 5 6 7 8 9
+    # 1 2 2 3 3 3 3 3 6 6
+    # 1 2 3 6 3 3 3 3 6 6
+    #                 ^
+    #
+    # i:      : 8
+    # next_pos: 4
+    # curr_num: 6
+
+    if not A:
+        return 0
+
+    next_pos = 1
+    curr_num = A[0]
+    for i in range(1, len(A)):
+        if A[i] != curr_num:
+            curr_num = A[i]
+            A[next_pos] = curr_num
+            next_pos += 1
+
+    return next_pos
 
 
 @enable_executor_hook

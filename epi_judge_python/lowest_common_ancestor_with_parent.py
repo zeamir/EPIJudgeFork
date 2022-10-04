@@ -11,6 +11,21 @@ from test_framework.test_utils import enable_executor_hook
 def lca(node0: BinaryTreeNode,
         node1: BinaryTreeNode) -> Optional[BinaryTreeNode]:
     # TODO - you fill in here.
+    # for the fist node
+    # pupulate dict containing the nodes path in revese order till we reach the root
+    seen = set()
+    curr = node0
+    while curr:
+        seen.add(curr)
+        curr = curr.parent
+
+    # for the 2nd node, check if it is in the map
+    curr = node1
+    while curr:
+        if curr in seen:
+            return curr
+        curr = curr.parent
+
     return None
 
 
