@@ -4,9 +4,9 @@ from test_framework import generic_test, test_utils
 
 
 def generate_balanced_parentheses(num_pairs: int) -> List[str]:
+
     # algo, recursively add parens. after adding each perens a recursive
     # call is made.
-
     matched_parens = [' ' for _ in range(2 * num_pairs)]
     res = []
     construct_matched_parens(matched_parens, 0, 0, 0, res)
